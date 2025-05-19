@@ -4,3 +4,5 @@ The software first integrates the equations of rotation of the secondary body ar
 It is important to note that after slight modifications of the code "secao.f", it is possible to obtain the curves of temporal variation of  rotational elements (see Figures 1b,c in Callegari 2024).
 
 "Hxy.f"  is a software written in Fortran code that generates the data to construct the level curves of the hamiltonian of the perturbed spin-orbit resonance (see Figures 2, 4, 5, and equations 26 or 34 in Callegari 2024).
+
+"raizesloop.f"  is a software written in Fortran code that generates the data to construct the bifurcation diagrams given in Figure 3 in Callegari (2024), where the real roots of the polynomial equation 31 are obtained numerically for a large set of parameters.
