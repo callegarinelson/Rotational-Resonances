@@ -22,7 +22,7 @@ c	write(*,*)tint
 	if(is.eq.2) then
 c  	tf=1.37d0/20.0d0
   	tf=ttp/100.0d0
-      tint=1000.0d0*ttp
+      tint=500.0d0*ttp
 	endif
 
 	if(is.eq.3) then
@@ -37,7 +37,7 @@ c      OPEN(22,FILE='fwrite.dat',STATUS='UNKNOWN')
    	     
 c**** DADOS DE ENTRADA                                           
 c	do exc=ei,ef,de
-	do tetaloop=-pi,pi,pi/27.0d0
+	do tetaloop=-pi,pi,pi/40.0d0
 c	write(*,*)tetaloop/conv
 	f=0.0d0
 	wz=dn
@@ -240,20 +240,20 @@ c	dteta/dt
       return
       end      
 
-ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc      
       SUBROUTINE ENTRE(is)
       implicit real *8(a-h,o-z)
       COMMON/const/c1,c2,eH,dK,dn,ttp
       COMMON/IN/pi,pi2,conv
-      pi=4.0d0*datan(1.0d0)
+      pi=4.0d0*datan(1.0d0)      
       pi2=pi+pi
       conv=pi/180.0d0
-
+ 
       OPEN(2588,FILE='Pan.dat',STATUS='UNKNOWN')
 
-	dm0=1.0d0
+	dm0=1.0d0  
 	grav=4.0d0*pi*pi
-ccccc      G=39.476926421373020d0
+ccccc      G=39.476926421373020d0 
 
 c	HORIZONS DATA SYSTEM PARA DATA 2007-JAN 01- 00:00
       ua=1.49597870691d11                                                   metros
@@ -284,21 +284,19 @@ ccccccccccccccc Enceladus
 c	aalfa=(bb-aa)/cc
 c	aalfa=0.26d0
 	aalfa=0.03853d0
-
+	
 c      aalfa= ( (aaa**2.0d0+ccc**2.0d0)-(bbb^2+ccc^2) )/(aaa^2+bbb^2)
-
-      aaa=0.7d0
-      bbb=0.250d0
+      
+      aaa=1.94d0
+      bbb=1.29d0
       aalfa= (aaa**2.0d0-bbb**2.0d0)/(aaa**2.0d0+bbb**2.0d0)
-
-
 
 
 	dK=1.5d0*G*dm0*aalfa
 
       dmH=1.901d-7
       dmH=0.0d0
-
+      
 c10.805d22/5.68462313752d29
       amiH=G*(dm0+dmH)
       dmimiH=(dm0+dmH)/(dm0*dmH)
@@ -306,18 +304,18 @@ c10.805d22/5.68462313752d29
 
       aH=133583.0d0/60268.0d0
       aH=1.342636274754209d+05/60268.0d0
+      
+         aH= 1.947075740548770E+05 /60268.0d0
 
-         aH= 1.680311951393808d+05 /60268.0d0
-
-
+      
 	ttp=2.0d0*pi*aH**(3.0d0/2.0d0)/dsqrt(amiH)
 c	write(*,*)aH,ttp
 c	pause
 	dn=dsqrt( amiH/(aH**3.0d0) )
 
-      eH=2.791261682951714d-03
-      eH=0.0005d0
-                 domega2=3.0d0*dn*dn*aalfa
+      eH=1.391889851375553d-03
+
+        domega2=3.0d0*dn*dn*aalfa
 
         dkk11=2.0d0*domega2*eH/(dn*dn-domega2)
 
@@ -336,6 +334,7 @@ c	write(*,*)c1,c2,dk
 
 
 
+
 cccccccccccccccccccccccccccccccc
 
 c	JACOBSON 2005
@@ -346,15 +345,15 @@ C	JACOBSON 2006
       dj2= 0.01629071d0
 	dj4=-0.0009358d0
 
-c     grav=G
-c     ua=1.4959787d11  metros
-
+c     grav=G      
+c     ua=1.4959787d11  metros        
+ 
 c:    GRAV acima em UA**3/(Massa Solar*Ano**2)
 c:    UA acima em metros  e Raio equatorial=requat sera em METROS (aqui)
-
-
+ 
+      
       return
-	end
+	end       
 
 C----------------------------------------------------------------------
 
